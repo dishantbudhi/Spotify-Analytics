@@ -1,0 +1,87 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "beatscope-spotify-analytics"
+version = "1.0.0"
+description = "A personal data-driven platform for analyzing Spotify streaming history"
+authors = [
+    {name = "Personal Project", email = "personal@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "requests>=2.31.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "plotly>=5.15.0",
+    "streamlit>=1.28.0",
+    "streamlit-plotly-events>=0.0.6",
+    "scikit-learn>=1.3.0",
+    "pydantic>=2.0.0",
+    "python-dateutil>=2.8.0",
+    "tqdm>=4.65.0",
+    "pyyaml>=6.0",
+    "pytest>=7.4.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "flake8>=6.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.0.0"
+]
+
+[tool.pyright]
+include = [
+    "main.py",
+    "setup.py",
+    "src"
+]
+exclude = [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.*",
+    "data",
+    "logs",
+    "results",
+    "tests"
+]
+reportMissingImports = "warning"
+reportMissingModuleSource = "warning"
+reportMissingTypeStubs = "none"
+pythonVersion = "3.8"
+typeCheckingMode = "basic"
+useLibraryCodeForTypes = true
+extraPaths = ["src"]
+
+[tool.black]
+line-length = 120
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
